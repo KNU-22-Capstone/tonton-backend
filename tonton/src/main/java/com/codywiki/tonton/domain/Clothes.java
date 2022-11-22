@@ -1,8 +1,12 @@
 package com.codywiki.tonton.domain;
 
+import com.codywiki.tonton.domain.enums.ClothesDetailTag;
+import com.codywiki.tonton.domain.enums.ClothesTag;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -19,8 +23,10 @@ public class Clothes {
     private Long id;
     private String name;
     private int price;
-    private String majorTag;
-    private String detailTag;
+    @Enumerated(EnumType.STRING)
+    private ClothesTag majorTag;
+    @Enumerated(EnumType.STRING)
+    private ClothesDetailTag detailTag;
     private String pictureUrl;
     private String siteUrl;
     private String siteName;
@@ -34,9 +40,9 @@ public class Clothes {
     private final List<Zzim> zzims = new ArrayList<>();
 
     @Builder
-    public Clothes(final String name, final int price, final String majorTag, final String detailTag,
-                   final String pictureUrl, final String siteUrl,
-                   final String siteName, final Long views, final boolean sold) {
+    public Clothes(final String name, final int price, final ClothesTag majorTag, final ClothesDetailTag detailTag,
+                   final String pictureUrl,
+                   final String siteUrl, final String siteName, final Long views, final boolean sold) {
         this.name = name;
         this.price = price;
         this.majorTag = majorTag;
