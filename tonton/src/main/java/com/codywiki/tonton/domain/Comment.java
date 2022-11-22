@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -17,7 +19,8 @@ public class Comment {
     @GeneratedValue
     private Long id;
     private String content;
-    private Date date;
+    @Temporal(value = TemporalType.TIMESTAMP)
+    private Date writeDate;
 
     @ManyToOne
     @JoinColumn(name = "member_id")

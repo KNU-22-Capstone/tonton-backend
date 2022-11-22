@@ -7,8 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,8 +24,10 @@ public class Article {
     @GeneratedValue
     private Long id;
     private String title;
+    @Lob
     private String content;
     private long likeCount;
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date writeDate;
     private String category;
 
