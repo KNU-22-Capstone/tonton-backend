@@ -20,7 +20,11 @@ spring:
     init:
       mode: always
 
-
 logging:
   level:
     org.hibernate.SQL: debug
+
+jwt:
+  header: Authorization
+  secret: aG9zZW9rLWp3dC10dXRvcmlhbC1nZW5lcmF0ZS1zZWNyZXQta2V5Cg==
+  token-validity-in-seconds: 86400
