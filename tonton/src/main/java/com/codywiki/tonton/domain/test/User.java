@@ -40,7 +40,7 @@ public class User {
 
     @JsonIgnore
     @Column(name = "activated")
-    private String activated;
+    private boolean activated;
 
     @ManyToMany
     @JoinTable(
