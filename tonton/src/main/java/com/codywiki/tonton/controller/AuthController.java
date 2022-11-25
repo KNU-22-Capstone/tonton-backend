@@ -6,6 +6,7 @@ import com.codywiki.tonton.jwt.JwtFilter;
 import com.codywiki.tonton.jwt.TokenProvider;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
  * <P>
  * JWT Token을 Response Header에도 넣고, TokenDto를 이용해서 Response Body에도 넣어서 리턴한다.
  */
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api")
@@ -39,7 +41,7 @@ public class AuthController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<TokenDto> authorize(@Valid @RequestBody LoginDto loginDto) {
-
+        log.info("loginDto = {}", loginDto);
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
 
@@ -50,8 +52,6 @@ public class AuthController {
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
-
         return new ResponseEntity<>(new TokenDto(jwt), httpHeaders, HttpStatus.OK);
-
     }
 }

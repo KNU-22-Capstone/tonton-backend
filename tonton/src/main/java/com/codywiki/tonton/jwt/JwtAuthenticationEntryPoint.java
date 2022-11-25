@@ -20,6 +20,7 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
             final HttpServletRequest request,
             final HttpServletResponse response,
             final AuthenticationException authException) throws IOException, ServletException {
+        System.out.println("pass 401");
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
     }
 }
