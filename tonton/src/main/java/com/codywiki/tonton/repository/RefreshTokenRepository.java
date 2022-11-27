@@ -1,6 +1,6 @@
 package com.codywiki.tonton.repository;
 
-import com.codywiki.tonton.domain.jwt.RefreshToken;
+import com.codywiki.tonton.entity.jwt.RefreshToken;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

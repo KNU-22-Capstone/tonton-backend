@@ -1,4 +1,4 @@
-package com.codywiki.tonton.domain.enums;
+package com.codywiki.tonton.entity.enums;
 
 public enum ClothesDetailTag {
     SHORT_SLEEVE("반팔티"),

@@ -1,7 +1,6 @@
-package com.codywiki.tonton.domain;
+package com.codywiki.tonton.entity;
 
-import com.codywiki.tonton.domain.enums.Authority;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.codywiki.tonton.entity.enums.Authority;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -25,6 +24,7 @@ public class Member {
     private String nickname;
     private String loginId;
     private String password;
+
     @Enumerated(EnumType.STRING)
     private Authority authority;
 

@@ -2,7 +2,7 @@ package com.codywiki.tonton.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.codywiki.tonton.domain.Member;
+import com.codywiki.tonton.entity.Member;
 import org.aspectj.lang.annotation.After;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

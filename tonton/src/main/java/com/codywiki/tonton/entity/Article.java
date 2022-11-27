@@ -1,4 +1,4 @@
-package com.codywiki.tonton.domain;
+package com.codywiki.tonton.entity;
 
 import java.util.ArrayList;
 import java.util.Date;

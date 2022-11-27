@@ -1,6 +1,6 @@
 package com.codywiki.tonton.service;
 
-import com.codywiki.tonton.domain.Member;
+import com.codywiki.tonton.entity.Member;
 import com.codywiki.tonton.repository.MemberRepository;
 import java.util.Collections;
 import lombok.RequiredArgsConstructor;

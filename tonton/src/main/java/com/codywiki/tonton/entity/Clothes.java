@@ -1,7 +1,7 @@
-package com.codywiki.tonton.domain;
+package com.codywiki.tonton.entity;
 
-import com.codywiki.tonton.domain.enums.ClothesDetailTag;
-import com.codywiki.tonton.domain.enums.ClothesTag;
+import com.codywiki.tonton.entity.enums.ClothesDetailTag;
+import com.codywiki.tonton.entity.enums.ClothesTag;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
