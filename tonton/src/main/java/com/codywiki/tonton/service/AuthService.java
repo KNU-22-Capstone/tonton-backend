@@ -61,19 +61,23 @@ public class AuthService {
 
     @Transactional
     public TokenDto reissue(TokenServiceDto tokenServiceDto) {
-        // 1. Refresh Token 검증
-        if (!tokenProvider.validateToken(tokenServiceDto.getRefreshToken())) {
+        // 1. 리프레쉬 토큰 인덱스로 리프레쉬 토큰 가져오기
+        RefreshToken refreshToken = refreshTokenRepository.findByKey(tokenServiceDto.getRefreshTokenIndex())
+                .orElseThrow(() -> new IllegalArgumentException("[ERROR] 존재하지 않는 리프레쉬 토큰입니다."));
+
+        // 2. Refresh Token 검증
+        if (!tokenProvider.validateToken(refreshToken.getValue())) {
             throw new IllegalIdentifierException("[ERROR] Refresh Token이 유효하지 않습니다.");
         }
 
-        // 2. Access Token에서 Member ID 가져오기
+        // 3. Access Token에서 Member ID 가져오기
         Authentication authentication = tokenProvider.getAuthentication(tokenServiceDto.getAccessToken());
-        // 3. 저장소에서 Member ID를 기반으로 Refresh Token값 가져옴
-        RefreshToken refreshToken = refreshTokenRepository.findByKey(authentication.getName())
+        // 4. 저장소에서 Member ID를 기반으로 Refresh Token값 가져옴
+        RefreshToken refreshTokenToValidate = refreshTokenRepository.findByKey(authentication.getName())
                 .orElseThrow(() -> new IllegalArgumentException("[ERROR] 로그아웃 된 사용자입니다."));
 
         // 4. Refresh Token 일치하는지 검사
-        if (!refreshToken.getValue().equals(tokenServiceDto.getRefreshToken())) {
+        if (!refreshTokenToValidate.getValue().equals(refreshToken.getValue())) {
             throw new IllegalArgumentException("[ERROR] 토큰의 유저 정보가 일치하지 않습니다.");
         }
 
