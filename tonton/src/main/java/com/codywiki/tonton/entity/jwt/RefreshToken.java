@@ -1,4 +1,4 @@
-package com.codywiki.tonton.domain.jwt;
+package com.codywiki.tonton.entity.jwt;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

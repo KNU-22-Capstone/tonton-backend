@@ -1,7 +1,7 @@
 package com.codywiki.tonton.dto.member.sign;
 
-import com.codywiki.tonton.domain.Member;
-import com.codywiki.tonton.domain.enums.Authority;
+import com.codywiki.tonton.entity.Member;
+import com.codywiki.tonton.entity.enums.Authority;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

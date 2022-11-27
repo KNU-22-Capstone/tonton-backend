@@ -1,4 +1,4 @@
-package com.codywiki.tonton.domain.enums;
+package com.codywiki.tonton.entity.enums;
 
 import java.util.Arrays;
 import java.util.Collections;

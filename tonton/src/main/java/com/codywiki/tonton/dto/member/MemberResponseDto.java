@@ -1,6 +1,6 @@
 package com.codywiki.tonton.dto.member;
 
-import com.codywiki.tonton.domain.Member;
+import com.codywiki.tonton.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
