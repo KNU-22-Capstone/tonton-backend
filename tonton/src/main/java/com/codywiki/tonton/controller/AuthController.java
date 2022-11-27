@@ -1,6 +1,6 @@
 package com.codywiki.tonton.controller;
 
-import com.codywiki.message.ResponseMessage;
+import com.codywiki.tonton.message.ResponseMessage;
 import com.codywiki.tonton.controller.dto.ResponseDto;
 import com.codywiki.tonton.controller.dto.jwt.TokenRequestDto;
 import com.codywiki.tonton.controller.dto.member.sign.MemberSignInRequestDto;
@@ -24,7 +24,6 @@ public class AuthController {
 
     @GetMapping("/signout")
     public ResponseEntity<ResponseDto> signOut(@RequestHeader final String authorization) {
-        System.out.println(authorization);
         authService.signOut(authorization);
         return ResponseEntity.ok(ResponseDto.of(
                 HttpStatus.OK,

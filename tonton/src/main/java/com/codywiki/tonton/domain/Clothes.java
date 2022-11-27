@@ -4,6 +4,7 @@ import com.codywiki.tonton.domain.enums.ClothesDetailTag;
 import com.codywiki.tonton.domain.enums.ClothesTag;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -21,12 +22,18 @@ public class Clothes {
     @Id
     @GeneratedValue
     private Long id;
+
+    @Column(unique = true)
     private String name;
+
     private int price;
+
     @Enumerated(EnumType.STRING)
     private ClothesTag majorTag;
+
     @Enumerated(EnumType.STRING)
     private ClothesDetailTag detailTag;
+
     private String pictureUrl;
     private String siteUrl;
     private String siteName;

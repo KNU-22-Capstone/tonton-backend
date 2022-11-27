@@ -1,9 +1,9 @@
 package com.codywiki.tonton.controller;
 
-import com.codywiki.message.ResponseMessage;
+import com.codywiki.tonton.message.ResponseMessage;
 import com.codywiki.tonton.controller.dto.ResponseDto;
 import com.codywiki.tonton.service.MemberService;
-import com.codywiki.util.SecurityUtil;
+import com.codywiki.tonton.util.SecurityUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

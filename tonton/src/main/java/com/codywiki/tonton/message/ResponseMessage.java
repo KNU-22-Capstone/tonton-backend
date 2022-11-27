@@ -1,4 +1,4 @@
-package com.codywiki.message;
+package com.codywiki.tonton.message;
 
 public class ResponseMessage {
     // sign
