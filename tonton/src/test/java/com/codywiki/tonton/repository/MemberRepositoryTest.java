@@ -34,7 +34,6 @@ class MemberRepositoryTest {
                 .nickname("hoseok")
                 .loginId("lee123")
                 .password("1234")
-                .phone("010-1234-1234")
                 .build();
 
         // when
