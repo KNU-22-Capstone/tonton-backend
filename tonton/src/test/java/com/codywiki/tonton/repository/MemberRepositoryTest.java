@@ -11,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @ExtendWith(SpringExtension.class)
@@ -27,6 +28,7 @@ class MemberRepositoryTest {
 
     @DisplayName("멤버 정상 등록 테스트")
     @Test
+    @Transactional
     void saveMember() {
         // given
         Member member = Member.builder()

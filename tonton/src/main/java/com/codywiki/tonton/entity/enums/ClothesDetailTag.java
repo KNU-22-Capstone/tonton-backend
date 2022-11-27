@@ -17,7 +17,7 @@ public enum ClothesDetailTag {
     HAT("모자"),
     ETC("기타");
 
-    private String title;
+    private final String title;
 
     ClothesDetailTag(final String title) {
         this.title = title;
