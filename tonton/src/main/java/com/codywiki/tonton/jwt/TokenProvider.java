@@ -1,6 +1,6 @@
 package com.codywiki.tonton.jwt;
 
-import com.codywiki.tonton.controller.dto.TokenDto;
+import com.codywiki.tonton.dto.jwt.TokenDto;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
