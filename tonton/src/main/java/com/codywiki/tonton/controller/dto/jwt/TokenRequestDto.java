@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TokenRequestDto {
+    private String refreshTokenIndex;
     private String accessToken;
-    private String refreshToken;
 
     public TokenServiceDto toServiceDto() {
         return TokenServiceDto.builder()
                 .accessToken(accessToken)
-                .refreshToken(refreshToken)
+                .refreshTokenIndex(refreshTokenIndex)
                 .build();
     }
 }
