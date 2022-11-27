@@ -34,6 +34,7 @@ public class Clothes {
     @Enumerated(EnumType.STRING)
     private ClothesDetailTag detailTag;
 
+    @Column(unique = true)
     private String pictureUrl;
     private String siteUrl;
     private String siteName;
