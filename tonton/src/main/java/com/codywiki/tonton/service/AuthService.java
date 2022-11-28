@@ -76,15 +76,15 @@ public class AuthService {
         RefreshToken refreshTokenToValidate = refreshTokenRepository.findByKey(authentication.getName())
                 .orElseThrow(() -> new IllegalArgumentException("[ERROR] 로그아웃 된 사용자입니다."));
 
-        // 4. Refresh Token 일치하는지 검사
+        // 5. Refresh Token 일치하는지 검사
         if (!refreshTokenToValidate.getValue().equals(refreshToken.getValue())) {
             throw new IllegalArgumentException("[ERROR] 토큰의 유저 정보가 일치하지 않습니다.");
         }
 
-        // 5. 새로운 토큰 생성
+        // 6. 새로운 토큰 생성
         TokenDto tokenDto = tokenProvider.generateTokenDto(authentication);
 
-        // 6. 저장소 정보 업데이트
+        // 7. 저장소 정보 업데이트
         RefreshToken newRefreshToken = refreshToken.updateValue(tokenDto.getRefreshToken());
         refreshTokenRepository.save(newRefreshToken);
 
