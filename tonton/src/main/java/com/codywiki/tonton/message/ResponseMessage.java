@@ -14,6 +14,9 @@ public class ResponseMessage {
     public static final String GET_MY_PROFILE_SUCCESS = "내 프로필 가져오기 성공입니다.";
     public static final String GET_PROFILE_SUCCESS = "프로필 가져오기 성공입니다.";
 
+    // article
+    public static final String POST_ARTICLE_SUCCESS = "게시글 작성 성공입니다.";
+
     private ResponseMessage() {
     }
 }
