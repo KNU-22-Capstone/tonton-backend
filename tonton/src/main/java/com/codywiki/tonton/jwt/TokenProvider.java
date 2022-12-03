@@ -31,6 +31,7 @@ public class TokenProvider {
     private static final String BEARER_TYPE = "Bearer";
     private static final long ACCESS_TOKEN_EXPIRE_TIME = 1000 * 60 * 30;            // 30분
     private static final long REFRESH_TOKEN_EXPIRE_TIME = 1000 * 60 * 60 * 24 * 7;  // 7일
+    public static final int BEGIN_TOKEN_INDEX = 7;
 
     private final Key key;
 
@@ -119,5 +120,10 @@ public class TokenProvider {
         } catch (ExpiredJwtException e) {
             return e.getClaims();
         }
+    }
+
+    public long parseMemberId(String authorization) {
+        Authentication authentication = getAuthentication(authorization.substring(BEGIN_TOKEN_INDEX));
+        return Long.parseLong(authentication.getName());
     }
 }
