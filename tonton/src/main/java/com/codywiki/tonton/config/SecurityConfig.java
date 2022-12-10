@@ -35,7 +35,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         // CSRF 설정 Disable
         http.csrf().disable()
-
+                .cors().and()
                 // exception handling 할 때 우리가 만든 클래스 추가
                 .exceptionHandling()
                 .authenticationEntryPoint(jwtAuthenticationEntryPoint)
