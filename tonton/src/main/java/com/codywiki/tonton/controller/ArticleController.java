@@ -19,9 +19,7 @@ public class ArticleController {
     private final ArticleService articleService;
 
     @PostMapping
-    public ResponseEntity<ResponseDto> save(
-            @RequestBody final ArticlePostRequestDto writeArticle
-    ) {
+    public ResponseEntity<ResponseDto> save(@RequestBody final ArticlePostRequestDto writeArticle) {
         articleService.save(writeArticle.toService());
         return ResponseEntity.ok(ResponseDto.of(
                 HttpStatus.OK,
@@ -29,4 +27,9 @@ public class ArticleController {
                 null
         ));
     }
+//
+//    @GetMapping
+//    public ResponseEntity<ResponseDto> readAll() {
+//        articleService.readAll();
+//    }
 }
