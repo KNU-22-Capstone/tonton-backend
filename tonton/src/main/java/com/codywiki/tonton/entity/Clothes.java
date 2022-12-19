@@ -5,6 +5,7 @@ import com.codywiki.tonton.entity.enums.ClothesTag;
 import com.codywiki.tonton.entity.enums.Color;
 import com.codywiki.tonton.entity.enums.Saturation;
 import com.codywiki.tonton.entity.enums.Value;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -54,9 +55,11 @@ public class Clothes {
     private boolean sold;
 
     @OneToMany(mappedBy = "clothes")
+    @JsonIgnore
     private final List<Coordination> coordinations = new ArrayList<>();
 
     @OneToMany(mappedBy = "clothes")
+    @JsonIgnore
     private final List<Zzim> zzims = new ArrayList<>();
 
     @Builder
