@@ -7,6 +7,7 @@ import com.codywiki.tonton.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,9 +28,13 @@ public class ArticleController {
                 null
         ));
     }
-//
-//    @GetMapping
-//    public ResponseEntity<ResponseDto> readAll() {
-//        articleService.readAll();
-//    }
+
+    @GetMapping
+    public ResponseEntity<ResponseDto> readAll() {
+        return ResponseEntity.ok(ResponseDto.of(
+                HttpStatus.OK,
+                ResponseMessage.READ_ALL_ARTICLES_SUCCESS,
+                articleService.readAll()
+        ));
+    }
 }
