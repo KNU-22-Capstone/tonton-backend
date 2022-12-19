@@ -1,7 +1,7 @@
 package com.codywiki.tonton.controller;
 
-import com.codywiki.tonton.message.ResponseMessage;
 import com.codywiki.tonton.controller.dto.ResponseDto;
+import com.codywiki.tonton.message.ResponseMessage;
 import com.codywiki.tonton.service.MemberService;
 import com.codywiki.tonton.util.SecurityUtil;
 import lombok.RequiredArgsConstructor;
