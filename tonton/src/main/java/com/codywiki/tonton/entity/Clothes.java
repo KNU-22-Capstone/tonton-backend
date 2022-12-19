@@ -2,6 +2,9 @@ package com.codywiki.tonton.entity;
 
 import com.codywiki.tonton.entity.enums.ClothesDetailTag;
 import com.codywiki.tonton.entity.enums.ClothesTag;
+import com.codywiki.tonton.entity.enums.Color;
+import com.codywiki.tonton.entity.enums.Saturation;
+import com.codywiki.tonton.entity.enums.Value;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -34,6 +37,15 @@ public class Clothes {
     @Enumerated(EnumType.STRING)
     private ClothesDetailTag detailTag;
 
+    @Enumerated(EnumType.STRING)
+    private Color color;
+
+    @Enumerated(EnumType.ORDINAL)
+    private Saturation saturation;
+
+    @Enumerated(EnumType.ORDINAL)
+    private Value value;
+
     @Column(unique = true)
     private String pictureUrl;
     private String siteUrl;
@@ -48,13 +60,18 @@ public class Clothes {
     private final List<Zzim> zzims = new ArrayList<>();
 
     @Builder
-    public Clothes(final String name, final int price, final ClothesTag majorTag, final ClothesDetailTag detailTag,
-                   final String pictureUrl,
-                   final String siteUrl, final String siteName, final Long views, final boolean sold) {
+    public Clothes(final String name, final int price, final ClothesTag majorTag,
+                   final ClothesDetailTag detailTag, final Color color,
+                   final Saturation saturation, final Value value, final String pictureUrl, final String siteUrl,
+                   final String siteName, final Long views,
+                   final boolean sold) {
         this.name = name;
         this.price = price;
         this.majorTag = majorTag;
         this.detailTag = detailTag;
+        this.color = color;
+        this.saturation = saturation;
+        this.value = value;
         this.pictureUrl = pictureUrl;
         this.siteUrl = siteUrl;
         this.siteName = siteName;
