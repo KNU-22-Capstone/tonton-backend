@@ -16,6 +16,9 @@ public class ResponseMessage {
 
     // article
     public static final String POST_ARTICLE_SUCCESS = "게시글 작성 성공입니다.";
+    public static final String ALL_CLOTHES_SUCCESS = "모든 옷 조회 성공입니다.";
+    public static final String ALL_CLOTHES_BY_SITE_SUCCESS = "특정 사이트의 모든 옷 조회 성공입니다.";
+    public static final String ALL_CLOTHES_BY_COLOR_SUCCESS = "특정 컬러의 모든 옷 조회 성공";
 
     private ResponseMessage() {
     }
