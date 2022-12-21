@@ -37,25 +37,10 @@ public enum ClothesTag {
         this.detailTags = detailTags;
     }
 
-    public static ClothesTag findByDetailTagType(ClothesDetailTag clothesDetailTag) {
-        return Arrays.stream(ClothesTag.values())
-                .filter(clothesTag -> clothesTag.hasDetailTag(clothesDetailTag))
-                .findAny()
-                .orElse(EMPTY);
-    }
-
     public static List<ClothesTag> getTagsExcept(final ClothesTag majorTag) {
         return Arrays.stream(values())
                 .filter(clothesTag -> clothesTag != majorTag)
                 .collect(Collectors.toList());
     }
 
-    private boolean hasDetailTag(final ClothesDetailTag clothesDetailTag) {
-        return detailTags.stream()
-                .anyMatch(tag -> tag == clothesDetailTag);
-    }
-
-    public String getTitle() {
-        return title;
-    }
 }

@@ -3,6 +3,7 @@ package com.codywiki.tonton.controller;
 import com.codywiki.tonton.controller.dto.ResponseDto;
 import com.codywiki.tonton.controller.dto.clothes.ClothesSelectDto;
 import com.codywiki.tonton.controller.dto.clothes.MatchingInfoDto;
+import com.codywiki.tonton.dto.clothes.matching.MatchingResult;
 import com.codywiki.tonton.message.ResponseMessage;
 import com.codywiki.tonton.service.ClothesService;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +29,7 @@ public class ClothesController {
     public ResponseEntity<ResponseDto> getTotal(
             @PageableDefault(sort = "id", direction = Direction.DESC, size = 25) Pageable pageable,
             @ModelAttribute ClothesSelectDto clothesSelectDto) {
-        log.info("clothesSelectDto = {}", clothesSelectDto);
+//        log.info("clothesSelectDto = {}", clothesSelectDto);
         return ResponseEntity.ok(ResponseDto.of(
                 HttpStatus.OK,
                 ResponseMessage.ALL_CLOTHES_SUCCESS,
@@ -42,13 +43,13 @@ public class ClothesController {
      */
     @GetMapping("/matching")
     public ResponseEntity<ResponseDto> recommendClothes(@ModelAttribute final MatchingInfoDto matchingResultDto) {
-        log.info("matchingResultDto = {}", matchingResultDto);
-        clothesService.findMatchingResult(matchingResultDto);
-
+//        log.info("matchingResultDto = {}", matchingResultDto);
+        MatchingResult matchingResult = clothesService.findMatchingResult(matchingResultDto);
+        log.info("matchingResult = {}", matchingResult);
         return ResponseEntity.ok(ResponseDto.of(
                 HttpStatus.OK,
                 ResponseMessage.MATCHING_CLOTHES_SUCCESS,
-                null
+                matchingResult
         ));
     }
 }

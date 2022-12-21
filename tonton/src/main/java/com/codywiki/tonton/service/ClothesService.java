@@ -3,12 +3,16 @@ package com.codywiki.tonton.service;
 import com.codywiki.tonton.controller.dto.clothes.ClothesSelectDto;
 import com.codywiki.tonton.controller.dto.clothes.MatchingInfoDto;
 import com.codywiki.tonton.dto.clothes.MatchingInfoServiceDto;
+import com.codywiki.tonton.dto.clothes.matching.MatchingResult;
+import com.codywiki.tonton.dto.clothes.matching.ToneAndTone;
+import com.codywiki.tonton.dto.clothes.matching.ToneInTone;
 import com.codywiki.tonton.entity.Clothes;
 import com.codywiki.tonton.entity.enums.ClothesDetailTag;
 import com.codywiki.tonton.entity.enums.ClothesTag;
 import com.codywiki.tonton.entity.enums.Color;
 import com.codywiki.tonton.repository.ClothesRepository;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -52,19 +56,23 @@ public class ClothesService {
         return null;
     }
 
-    public void findMatchingResult(final MatchingInfoDto matchingResultDto) {
+    @Transactional(readOnly = true)
+    public MatchingResult findMatchingResult(final MatchingInfoDto matchingResultDto) {
         MatchingInfoServiceDto matchingInfoServiceDto = MatchingInfoServiceDto.of(matchingResultDto);
-        findToneInTone(matchingInfoServiceDto.getMajorTag(), matchingInfoServiceDto.getColor());
-        findToneAndTone(matchingInfoServiceDto);
+        return MatchingResult.of(
+                findToneInTone(matchingInfoServiceDto.getMajorTag(), matchingInfoServiceDto.getColor()),
+                findToneAndTone(matchingInfoServiceDto)
+        );
     }
 
-    private List<Clothes> findToneAndTone(final MatchingInfoServiceDto matchingInfoServiceDto) {
+    private List<ToneAndTone> findToneAndTone(final MatchingInfoServiceDto matchingInfoServiceDto) {
         return null;
     }
 
-    private List<Clothes> findToneInTone(final ClothesTag majorTag, final Color color) {
+    private List<ToneInTone> findToneInTone(final ClothesTag majorTag, final Color color) {
         List<ClothesTag> tagsToFind = ClothesTag.getTagsExcept(majorTag);
-        log.info("tagsToFind = {}", tagsToFind);
-        return null;
+        return tagsToFind.stream()
+                .map(tag -> new ToneInTone(clothesRepository.findTop10ByMajorTagAndColor(tag, color)))
+                .collect(Collectors.toList());
     }
 }
