@@ -10,10 +10,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ClothesRepository extends JpaRepository<Clothes, Long> {
     Clothes findByPictureUrl(final String pictureUrl);
 
-    Page<Clothes> findAllBySiteName(final Pageable pageable, final String siteName);
-
-    Page<Clothes> findAllByColor(final Pageable pageable, final Color color);
-
     Page<Clothes> findAllByDetailTag(final Pageable pageable, final ClothesDetailTag detailTag);
 
     Page<Clothes> findAllByDetailTagAndColor(

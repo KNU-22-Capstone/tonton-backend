@@ -45,13 +45,4 @@ public class ClothesService {
         }
         return null;
     }
-
-    @Transactional(readOnly = true)
-    public Page<Clothes> findAllClothesBySite(final Pageable pageable, final String siteName) {
-        return clothesRepository.findAllBySiteName(pageable, siteName);
-    }
-
-    public Page<Clothes> findAllClothesByColor(final Pageable pageable, final Color color) {
-        return clothesRepository.findAllByColor(pageable, color);
-    }
 }
