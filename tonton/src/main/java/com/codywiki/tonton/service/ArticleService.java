@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -52,8 +53,8 @@ public class ArticleService {
                 .build());
     }
 
-    public List<ResponseArticleDto> readAll() {
-        return articleRepository.findAll()
+    public List<ResponseArticleDto> readAll(final Pageable pageable) {
+        return articleRepository.findAll(pageable)
                 .stream()
                 .map(ResponseArticleDto::of)
                 .collect(Collectors.toList());
