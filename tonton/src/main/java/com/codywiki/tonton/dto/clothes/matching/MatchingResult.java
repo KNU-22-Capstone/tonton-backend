@@ -9,10 +9,10 @@ import lombok.ToString;
 @Getter
 @AllArgsConstructor
 public class MatchingResult {
+    private final List<ToneOnTone> toneOnTones;
     private final List<ToneInTone> toneInTones;
-    private final List<ToneAndTone> toneAndTones;
 
-    public static MatchingResult of(final List<ToneInTone> toneInTones, final List<ToneAndTone> toneAndTones) {
-        return new MatchingResult(toneInTones, toneAndTones);
+    public static MatchingResult of(final List<ToneOnTone> toneOnTones, final List<ToneInTone> toneIntones) {
+        return new MatchingResult(toneOnTones, toneIntones);
     }
 }

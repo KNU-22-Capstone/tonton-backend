@@ -4,6 +4,8 @@ import com.codywiki.tonton.entity.Clothes;
 import com.codywiki.tonton.entity.enums.ClothesDetailTag;
 import com.codywiki.tonton.entity.enums.ClothesTag;
 import com.codywiki.tonton.entity.enums.Color;
+import com.codywiki.tonton.entity.enums.Saturation;
+import com.codywiki.tonton.entity.enums.Value;
 import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,4 +34,7 @@ public interface ClothesRepository extends JpaRepository<Clothes, Long> {
      * 1. 입력받은 의류태그 제외 나머지 태그에서 10개씩 추출 2. 현재 색상에서 찾아야함 (Tone In Tone)
      */
     List<Clothes> findTop10ByMajorTagAndColor(final ClothesTag majorTag, final Color color);
+
+    List<Clothes> findTop5ByMajorTagAndColorAndSaturationAndValue(final ClothesTag majorTag, final Color color,
+                                                                  final Saturation saturation, final Value value);
 }

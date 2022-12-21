@@ -43,4 +43,10 @@ public enum ClothesTag {
                 .collect(Collectors.toList());
     }
 
+    public static ClothesTag findMajorTag(final String majorTag) {
+        return Arrays.stream(values())
+                .filter(clothesTag -> clothesTag.title.equals(majorTag))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("[ERROR] 존재하지 않는 majorTag 입니다."));
+    }
 }

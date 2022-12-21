@@ -7,6 +7,6 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class ToneAndTone {
+public class ToneOnTone {
     private final List<Clothes> clothes;
 }

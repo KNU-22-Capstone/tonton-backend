@@ -17,7 +17,7 @@ public class MatchingInfoServiceDto {
     private final Value value;
 
     public static MatchingInfoServiceDto of(final MatchingInfoDto matchingResultDto) {
-        ClothesTag majorTag = ClothesTag.valueOf(matchingResultDto.getMajorTag());
+        ClothesTag majorTag = ClothesTag.findMajorTag(matchingResultDto.getMajorTag());
         Color color = Color.valueOf(matchingResultDto.getColor());
         Saturation saturation = Saturation.findSaturation(matchingResultDto.getSaturation());
         Value value = Value.findValue(matchingResultDto.getValue());
