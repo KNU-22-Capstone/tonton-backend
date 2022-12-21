@@ -1,12 +1,11 @@
 package com.codywiki.tonton.service;
 
-import com.codywiki.tonton.dto.article.AllArticleServiceDto;
 import com.codywiki.tonton.dto.article.ArticlePostServiceDto;
+import com.codywiki.tonton.dto.article.ResponseArticleDto;
 import com.codywiki.tonton.entity.Article;
 import com.codywiki.tonton.entity.Clothes;
 import com.codywiki.tonton.entity.Coordination;
 import com.codywiki.tonton.entity.Member;
-import com.codywiki.tonton.jwt.TokenProvider;
 import com.codywiki.tonton.repository.ArticleRepository;
 import com.codywiki.tonton.repository.ClothesRepository;
 import com.codywiki.tonton.repository.CoordinationRepository;
@@ -53,7 +52,10 @@ public class ArticleService {
                 .build());
     }
 
-    public AllArticleServiceDto readAll() {
-        return new AllArticleServiceDto(articleRepository.findAll());
+    public List<ResponseArticleDto> readAll() {
+        return articleRepository.findAll()
+                .stream()
+                .map(ResponseArticleDto::of)
+                .collect(Collectors.toList());
     }
 }
