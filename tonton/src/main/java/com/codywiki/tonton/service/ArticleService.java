@@ -1,5 +1,6 @@
 package com.codywiki.tonton.service;
 
+import com.codywiki.tonton.dto.article.AllArticleServiceDto;
 import com.codywiki.tonton.dto.article.ArticlePostServiceDto;
 import com.codywiki.tonton.entity.Article;
 import com.codywiki.tonton.entity.Clothes;
@@ -50,5 +51,9 @@ public class ArticleService {
                 .content(writeArticle.getContent())
                 .writeDate(writeArticle.getWriteDate())
                 .build());
+    }
+
+    public AllArticleServiceDto readAll() {
+        return new AllArticleServiceDto(articleRepository.findAll());
     }
 }

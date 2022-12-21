@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ClothesService {
     private final ClothesRepository clothesRepository;
-
+    
     @Transactional(readOnly = true)
     public Page<Clothes> findAllClothes(final Pageable pageable, final ClothesSelectDto clothesSelectDto) {
         return getClothes(pageable, clothesSelectDto);
