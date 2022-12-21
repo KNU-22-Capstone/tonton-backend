@@ -25,4 +25,10 @@ public interface ClothesRepository extends JpaRepository<Clothes, Long> {
             ClothesDetailTag detailTag,
             Color color,
             String siteName);
+
+    /**
+     * 1. 입력받은 의류태그 제외 나머지 태그에서 10개씩 추출
+     * 2. 현재 색상에서 찾아야함 (Tone in Tone)
+     */
+//    List<Clothes> find
 }

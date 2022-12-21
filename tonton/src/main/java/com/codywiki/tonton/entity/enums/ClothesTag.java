@@ -3,6 +3,7 @@ package com.codywiki.tonton.entity.enums;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public enum ClothesTag {
     TOP(
@@ -25,7 +26,7 @@ public enum ClothesTag {
             Arrays.asList(ClothesDetailTag.SNEAKERS,
                     ClothesDetailTag.DRESS_SHOES)),
     HAT("모자",
-            Arrays.asList(ClothesDetailTag.HAT)),
+            List.of(ClothesDetailTag.HAT)),
     EMPTY("없음", Collections.EMPTY_LIST);
 
     private final String title;
@@ -41,6 +42,12 @@ public enum ClothesTag {
                 .filter(clothesTag -> clothesTag.hasDetailTag(clothesDetailTag))
                 .findAny()
                 .orElse(EMPTY);
+    }
+
+    public static List<ClothesTag> getTagsExcept(final ClothesTag majorTag) {
+        return Arrays.stream(values())
+                .filter(clothesTag -> clothesTag != majorTag)
+                .collect(Collectors.toList());
     }
 
     private boolean hasDetailTag(final ClothesDetailTag clothesDetailTag) {
