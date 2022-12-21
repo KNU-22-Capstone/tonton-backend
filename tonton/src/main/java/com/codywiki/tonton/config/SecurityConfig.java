@@ -56,6 +56,7 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/auth/**").permitAll()
+                .antMatchers("/api/clothes/**").permitAll()
                 .anyRequest().authenticated()   // 나머지 API는 전부 인증 필요함
 
                 // JwtFilter를 addFilterBefore로 등록했던 JwtSecurityConfig 클래스를 적용

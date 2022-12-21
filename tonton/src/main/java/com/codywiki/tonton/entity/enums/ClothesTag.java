@@ -3,6 +3,7 @@ package com.codywiki.tonton.entity.enums;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public enum ClothesTag {
     TOP(
@@ -25,7 +26,7 @@ public enum ClothesTag {
             Arrays.asList(ClothesDetailTag.SNEAKERS,
                     ClothesDetailTag.DRESS_SHOES)),
     HAT("모자",
-            Arrays.asList(ClothesDetailTag.HAT)),
+            List.of(ClothesDetailTag.HAT)),
     EMPTY("없음", Collections.EMPTY_LIST);
 
     private final String title;
@@ -36,19 +37,16 @@ public enum ClothesTag {
         this.detailTags = detailTags;
     }
 
-    public static ClothesTag findByDetailTagType(ClothesDetailTag clothesDetailTag) {
-        return Arrays.stream(ClothesTag.values())
-                .filter(clothesTag -> clothesTag.hasDetailTag(clothesDetailTag))
+    public static List<ClothesTag> getTagsExcept(final ClothesTag majorTag) {
+        return Arrays.stream(values())
+                .filter(clothesTag -> clothesTag != majorTag)
+                .collect(Collectors.toList());
+    }
+
+    public static ClothesTag findMajorTag(final String majorTag) {
+        return Arrays.stream(values())
+                .filter(clothesTag -> clothesTag.title.equals(majorTag))
                 .findAny()
-                .orElse(EMPTY);
-    }
-
-    private boolean hasDetailTag(final ClothesDetailTag clothesDetailTag) {
-        return detailTags.stream()
-                .anyMatch(tag -> tag == clothesDetailTag);
-    }
-
-    public String getTitle() {
-        return title;
+                .orElseThrow(() -> new IllegalArgumentException("[ERROR] 존재하지 않는 majorTag 입니다."));
     }
 }
