@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://210.125.212.192:8888/tonton?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: admin
+    password: 1234
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: false
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        show_sql: false
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+
+jwt:
+  header: Authorization
+  secret: aG9zZW9rLWp3dC10dXRvcmlhbC1nZW5lcmF0ZS1zZWNyZXQta2V5LWhvc2Vvay1qd3QtdHV0b3JpYWwtZ2VuZXJhdGUtc2VjcmV0LWtleUQK
+  token-validity-in-seconds: 86400
