@@ -1,7 +1,6 @@
 package com.codywiki.tonton.entity;
 
 import com.codywiki.tonton.entity.enums.Authority;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -18,6 +17,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class Member {
+    @OneToMany(mappedBy = "member")
+    private final List<Article> articles = new ArrayList<>();
+    @OneToMany(mappedBy = "member")
+    private final List<Comment> comments = new ArrayList<>();
+    @OneToMany(mappedBy = "member")
+    private final List<Zzim> zzims = new ArrayList<>();
+    @OneToMany(mappedBy = "member")
+    private final List<Recommend> recommends = new ArrayList<>();
     @Id
     @GeneratedValue
     private Long id;
@@ -25,25 +32,8 @@ public class Member {
     private String nickname;
     private String loginId;
     private String password;
-
     @Enumerated(EnumType.STRING)
     private Authority authority;
-
-    @OneToMany(mappedBy = "member")
-    @JsonIgnore
-    private final List<Article> articles = new ArrayList<>();
-
-    @OneToMany(mappedBy = "member")
-    @JsonIgnore
-    private final List<Comment> comments = new ArrayList<>();
-
-    @OneToMany(mappedBy = "member")
-    @JsonIgnore
-    private final List<Zzim> zzims = new ArrayList<>();
-
-    @OneToMany(mappedBy = "member")
-    @JsonIgnore
-    private final List<Recommend> recommends = new ArrayList<>();
 
     @Builder
     public Member(final String name, final String nickname, final String loginId, final String password,
