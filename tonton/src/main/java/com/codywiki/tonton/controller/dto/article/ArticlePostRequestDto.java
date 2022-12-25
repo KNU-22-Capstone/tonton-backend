@@ -1,6 +1,6 @@
 package com.codywiki.tonton.controller.dto.article;
 
-import com.codywiki.tonton.dto.article.ArticlePostServiceDto;
+import com.codywiki.tonton.dto.article.ArticleSaveDto;
 import java.util.Date;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -16,8 +16,8 @@ public class ArticlePostRequestDto {
     private Date writeDate;
     private List<String> imageUrls;
 
-    public ArticlePostServiceDto toService() {
-        return ArticlePostServiceDto.builder()
+    public ArticleSaveDto toService() {
+        return ArticleSaveDto.builder()
                 .title(title)
                 .content(content)
                 .writeDate(writeDate)

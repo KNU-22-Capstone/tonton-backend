@@ -1,6 +1,7 @@
 package com.codywiki.tonton.entity;
 
 import com.codywiki.tonton.entity.enums.Authority;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -29,15 +30,19 @@ public class Member {
     private Authority authority;
 
     @OneToMany(mappedBy = "member")
+    @JsonIgnore
     private final List<Article> articles = new ArrayList<>();
 
     @OneToMany(mappedBy = "member")
+    @JsonIgnore
     private final List<Comment> comments = new ArrayList<>();
 
     @OneToMany(mappedBy = "member")
+    @JsonIgnore
     private final List<Zzim> zzims = new ArrayList<>();
 
     @OneToMany(mappedBy = "member")
+    @JsonIgnore
     private final List<Recommend> recommends = new ArrayList<>();
 
     @Builder
